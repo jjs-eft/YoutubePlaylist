@@ -33,15 +33,19 @@ export default {
 
 <style scoped>
 .playlist {
-  border: 1px red solid;
   width: 300px;
   height: 680px;
   margin-left: 15px;
   margin-top: 50px;
+  background-color: #f5e0a3;
+
+  border-radius: 10px;
 }
 
 .playlist_title {
-  border: 1px solid blue;
+  background-color: #eea282;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   max-width: 300px;
   width: 100%;
   text-align: center;

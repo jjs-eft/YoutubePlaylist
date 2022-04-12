@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="modal">
+    <div class="modal_app">
       <insertmodal />
     </div>
     <div class="top">
@@ -12,11 +12,11 @@
       <div class="searchbar">
         <searchbar />
       </div>
-      <menubtn />
+      <menubtn /> <button class="temp" @click="openModal">임시</button>
     </div>
     <div class="middle">
       <playlist class="playlist" />
-      <youtubeitem class="youtubeitem" />
+      <youtubeitem class="youtubeitem"></youtubeitem>
     </div>
   </div>
 </template>
@@ -35,6 +35,14 @@ export default {
     Youtubeitem,
     menubtn,
     insertmodal,
+  },
+
+  methods: {
+    openModal() {
+      console.log("temp");
+      const modal_app = document.querySelector(".modal_app");
+      modal_app.classList.add("_on");
+    },
   },
 };
 </script>
@@ -69,29 +77,35 @@ export default {
   margin: 20px auto;
   max-width: 1850px;
   width: 100%;
-  min-height: 800px;
+  min-height: 765px;
   height: 100%;
   display: flex;
-  border: 1px black solid;
+  border: 2px gray solid;
+  border-radius: 10px;
   justify-content: space-around;
 }
 
 .playlist {
-  border: 1px red solid;
   max-width: 300px;
   max-height: 700px;
   width: 100%;
   height: 100%;
-
   margin-left: 15px;
   margin-top: 50px;
 }
 .youtubeitem {
-  border: 1px blue solid;
   margin: 5px auto;
   max-width: 1500px;
   max-height: 800px;
   width: 100%;
   height: 100%;
+}
+
+.modal_app {
+  display: none;
+}
+
+.modal_app._on {
+  display: flex;
 }
 </style>
