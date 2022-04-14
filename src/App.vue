@@ -1,7 +1,11 @@
 <template>
   <div class="main">
     <div class="modal_app">
-      <insertmodal />
+      <modalview v-if="isModalViewed" @close-modal="isModalViewed = false">
+        <modal_add_cont v-if="modal_num === '1'" />
+        <modal_rename_cont v-if="modal_num === '2'" />
+        <modal_share_cont v-if="modal_num === '3'" />
+      </modalview>
     </div>
     <div class="top">
       <img
@@ -12,10 +16,14 @@
       <div class="searchbar">
         <searchbar />
       </div>
-      <menubtn /> <button class="temp" @click="openModal">임시</button>
+      <menubtn @open-modal-add="(isModalViewed = true), (modal_num = '1')" />
     </div>
     <div class="middle">
-      <playlist class="playlist" />
+      <playlist
+        class="playlist"
+        @open-modal-change="(isModalViewed = true), (modal_num = '2')"
+        @open-modal-share="(isModalViewed = true), (modal_num = '3')"
+      />
       <youtubeitem class="youtubeitem"></youtubeitem>
     </div>
   </div>
@@ -26,7 +34,10 @@ import Searchbar from "./components/searchbar.vue";
 import Playlist from "./components/playlist.vue";
 import Youtubeitem from "./components/youtubeitem.vue";
 import menubtn from "./components/menubtn.vue";
-import insertmodal from "./components/insertmodal.vue";
+import modalview from "./components/modalview.vue";
+import modal_add_cont from "./components/modal_add_cont.vue";
+import modal_rename_cont from "./components/modal_rename_cont.vue";
+import modal_share_cont from "./components/modal_share_cont.vue";
 export default {
   name: "App",
   components: {
@@ -34,16 +45,20 @@ export default {
     Playlist,
     Youtubeitem,
     menubtn,
-    insertmodal,
+    modalview,
+    modal_add_cont,
+    modal_rename_cont,
+    modal_share_cont,
   },
 
-  methods: {
-    openModal() {
-      console.log("temp");
-      const modal_app = document.querySelector(".modal_app");
-      modal_app.classList.add("_on");
-    },
+  data() {
+    return {
+      isModalViewed: false,
+      modal_num: 1,
+    };
   },
+
+  methods: {},
 };
 </script>
 
@@ -99,13 +114,5 @@ export default {
   max-height: 800px;
   width: 100%;
   height: 100%;
-}
-
-.modal_app {
-  display: none;
-}
-
-.modal_app._on {
-  display: flex;
 }
 </style>

@@ -9,39 +9,51 @@
         allowfullscreen
         class="youtube_item_temp"
       ></iframe>
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
     <div class="item">
       <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
+      <button class="item-menu">⨯</button>
     </div>
   </div>
 </template>
@@ -65,31 +77,51 @@ export default {
 }
 
 .item {
-  border: gray 1px solid;
-  max-width: 330px;
+  max-width: 350px;
   max-height: 200px;
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  margin: 20px auto;
-}
 
-.item_title {
-  font-size: 15px;
-  width: 100%;
-  height: 25px;
-  padding-left: 5px;
-  border: blue 1px solid;
+  margin: 20px auto;
 }
 
 .youtube_item_temp {
   width: 100%;
   height: 100%;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
 }
 
 .temp_img {
   width: 100%;
   height: 100%;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+}
+
+.item-menu {
+  width: 13px;
+  height: 40px;
+  border: 1px solid gray;
+  background-color: gray;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  color: gray;
+  font-size: 1px;
+}
+
+.item-menu:hover {
+  width: 30px;
+  height: 40px;
+  border: black 1px solid;
+  transition: all 2s;
+  background-color: #9dd3a8;
+  border: 1px solid #9dd3a8;
+  font-size: 30px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 </style>

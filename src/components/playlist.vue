@@ -15,8 +15,16 @@
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">선택</a></li>
-            <li><a class="dropdown-item" href="#">이름변경</a></li>
-            <li><a class="dropdown-item" href="#">공유하기</a></li>
+            <li>
+              <a class="dropdown-item" @click="$emit('open-modal-change')"
+                >이름변경</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" @click="$emit('open-modal-share')"
+                >공유하기</a
+              >
+            </li>
             <li><a class="dropdown-item" href="#">삭제</a></li>
           </ul>
         </div>

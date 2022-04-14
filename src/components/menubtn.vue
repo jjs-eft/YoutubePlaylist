@@ -6,7 +6,7 @@
     <button class="pag_btn">
       <img src="../assets/arrow_right.png" alt="" />
     </button>
-    <button class="insertbtn">추가하기</button>
+    <button class="insertbtn" @click="$emit('open-modal-add')">⫶⫶⫶</button>
   </div>
 </template>
 
@@ -22,17 +22,29 @@ export default {
   height: 40px;
   margin-left: 30px;
   margin-top: 5px;
-  border: 1px solid black;
+  border: 2px solid gray;
   padding: 5px;
   display: flex;
   justify-content: space-around;
+  border-radius: 5px;
 }
 
 .pag_btn {
-  border: 0px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .insertbtn {
-  border: 0px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 100px;
+  height: 26px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
