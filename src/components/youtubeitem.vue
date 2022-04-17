@@ -1,66 +1,37 @@
 <template>
   <div class="youtubeitem">
-    <div class="item">
-      <iframe
-        src="https://www.youtube.com/embed/k0z6me9hYwc"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        class="youtube_item_temp"
-      ></iframe>
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
-    <div class="item">
-      <img src="../assets/temp.png" alt="tempimg" class="temp_img" />
-      <button class="item-menu">⨯</button>
-    </div>
+    <ul v-for="youtubeLink in youtubeLinks" :key="youtubeLink.id" class="item">
+      <iframe :src="videoUrl" class="youtube_item_temp"></iframe>
+      <button class="item-menu" @click="removeYoutube(youtubeLink)">⨯</button>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   name: "youtubeitem",
+
+  computed: {
+    videoUrl() {
+      return `https://www.youtube.com/embed/${this.youtubeLinks[0].text}`;
+    },
+  },
+  props: {
+    youtubeLinks: Object,
+  },
+
+  methods: {
+    removeYoutube(youtubeLink) {
+      console.log("??");
+      var youtubeLinkEmit = new youtubeLinkEmit();
+
+      youtubeLinkEmit = this.youtubeLinks.filter(function (t) {
+        return t !== youtubeLink;
+      });
+
+      this.$emit("arraysync", this.youtubeLinkEmit);
+    },
+  },
 };
 </script>
 

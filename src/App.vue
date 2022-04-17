@@ -1,11 +1,13 @@
 <template>
   <div class="main">
     <div class="modal_app">
-      <modalview v-if="isModalViewed" @close-modal="isModalViewed = false">
-        <modal_add_cont v-if="modal_num === '1'" />
-        <modal_rename_cont v-if="modal_num === '2'" />
-        <modal_share_cont v-if="modal_num === '3'" />
-      </modalview>
+      <transition>
+        <modalview v-if="isModalViewed" @close-modal="isModalViewed = false">
+          <modal_add_cont v-if="modal_num === '1'" />
+          <modal_rename_cont v-if="modal_num === '2'" />
+          <modal_share_cont v-if="modal_num === '3'" />
+        </modalview>
+      </transition>
     </div>
     <div class="top">
       <img
@@ -24,7 +26,11 @@
         @open-modal-change="(isModalViewed = true), (modal_num = '2')"
         @open-modal-share="(isModalViewed = true), (modal_num = '3')"
       />
-      <youtubeitem class="youtubeitem"></youtubeitem>
+      <youtubeitem
+        v-bind:youtubeLinks="youtubeLinks"
+        @arraysync="youtubeLinkEmit"
+        class="youtubeitem"
+      />
     </div>
   </div>
 </template>
@@ -38,6 +44,9 @@ import modalview from "./components/modalview.vue";
 import modal_add_cont from "./components/modal_add_cont.vue";
 import modal_rename_cont from "./components/modal_rename_cont.vue";
 import modal_share_cont from "./components/modal_share_cont.vue";
+
+let id = 0;
+
 export default {
   name: "App",
   components: {
@@ -55,6 +64,20 @@ export default {
     return {
       isModalViewed: false,
       modal_num: 1,
+      youtubeLinks: [
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+        { id: id++, text: "k0z6me9hYwc" },
+      ],
     };
   },
 
@@ -108,11 +131,22 @@ export default {
   margin-left: 15px;
   margin-top: 50px;
 }
+
 .youtubeitem {
   margin: 5px auto;
   max-width: 1500px;
   max-height: 800px;
   width: 100%;
   height: 100%;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
